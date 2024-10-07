@@ -21,6 +21,8 @@ public class Flash {
         this.color = color;
     }
 
+    public int getId() { return id; }
+
     public void Rotate(Angle3D angle) { this.angle = angle; }
     public void Move(Point3D location) { this.location = location; }
 

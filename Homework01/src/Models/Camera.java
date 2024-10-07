@@ -19,5 +19,5 @@ public class Camera {
     public void Rotate(Angle3D angle) { this.angle = angle; }
     public void Move(Point3D location) { this.location = location; }
 
-
+    public int getId() { return id; }
 }

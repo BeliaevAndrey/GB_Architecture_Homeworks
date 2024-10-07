@@ -29,14 +29,64 @@ public class ModelStore implements IModelChanger{
 
     public void addModel(PolygonalModel model) {
         models.add(model);
-        notifyChanges("model");
+        notifyChanges("add","model");
+    }
+
+    public void addCamera(Camera cam) {
+        cameras.add(cam);
+        notifyChanges("add", "camera");
+    }
+
+    public void addFlash(Flash flash) {
+        flashes.add(flash);
+        notifyChanges("add", "flash");
+    }
+
+   public void addScene(Scene scene) {
+        scenes.add(scene);
+        notifyChanges("add", "scene");
     }
 
 
+    public void removeModel(PolygonalModel model) {
+        models.remove(model);
+        notifyChanges("remove","model");
+    }
+
+    public void removeCamera(int camId) {
+        for (Camera cam : cameras) {
+            if (cam.getId() == camId) {
+                cameras.remove(cam);
+                notifyChanges("remove", "camera " + camId);
+            }
+        }
+    }
+
+    public void removeFlash(int  flashId) {
+        for (Flash flash : flashes) {
+            if (flash.getId() == flashId) {
+                flashes.remove(flash);
+                notifyChanges("remove", "flash " + flashId);
+            }
+        }
+    }
+
+    public void removeScene(int  sceneId) {
+        for (Scene scene : scenes) {
+            if (scene.getId() == sceneId) {
+                scenes.remove(scene);
+                notifyChanges("remove", "scene " + sceneId);
+            }
+        }
+    }
+
+
+
+
     @Override
-    public void notifyChanges(String msg) {
+    public void notifyChanges(String act, String msg) {
         for (IModelChangedObserver observer : observers) {
-            observer.applyUpdateModel(msg);
+            if (observer.getAction().equals(act)) observer.applyUpdateModel(msg);
         }
     }
 
