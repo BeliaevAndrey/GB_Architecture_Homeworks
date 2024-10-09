@@ -6,6 +6,8 @@ import TemplateMethod.LogReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +15,8 @@ import java.util.Scanner;
 public class OperationSystemLogEventsReader extends LogReader {
 
     String path;
-    String filtered = null;
+    Path filePath = null;
+
 
 
     public OperationSystemLogEventsReader() {
@@ -21,11 +24,7 @@ public class OperationSystemLogEventsReader extends LogReader {
 
     public OperationSystemLogEventsReader(String path) {
         this.path = path;
-    }
-
-    public OperationSystemLogEventsReader(String path, String filtered) {
-        this.path = path;
-        this.filtered = filtered;
+        filePath = Path.of(path);
     }
 
     @Override
@@ -35,16 +34,19 @@ public class OperationSystemLogEventsReader extends LogReader {
 
     @Override
     public void setDataSource(Object data) {
-
+        path = data.toString();
+        filePath = Path.of(path);
     }
 
     @Override
     protected Iterable<String> readEntries(Integer position) {
 
         List<String> logList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine();
-            logList.add(line);
+        try (BufferedReader br = Files.newBufferedReader(filePath)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                logList.add(line);
+            }
         } catch (IOException e) { e.printStackTrace(); }
 
 
@@ -53,7 +55,6 @@ public class OperationSystemLogEventsReader extends LogReader {
 
     @Override
     protected LogEntry parseLogEntry(String stringEntry) {
-        if (stringEntry.contains(filtered)) return new LogEntry(stringEntry);
-        return null;
+        return new LogEntry(stringEntry);
     }
 }
