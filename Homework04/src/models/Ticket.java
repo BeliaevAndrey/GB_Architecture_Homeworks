@@ -1,6 +1,6 @@
 package models;
 
-import Excptions.TicketPurchasedException;
+import Exceptions.TicketPurchasedException;
 
 import java.util.Date;
 

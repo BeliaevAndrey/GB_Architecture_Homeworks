@@ -1,6 +1,6 @@
 package service;
 
-import Excptions.CustomerLoginError;
+import Exceptions.CustomerLoginError;
 import models.Customer;
 import models.Database;
 

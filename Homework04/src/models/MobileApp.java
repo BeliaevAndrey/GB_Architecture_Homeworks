@@ -1,7 +1,7 @@
 package models;
 
-import Excptions.CustomerLoginError;
-import Excptions.TicketPurchasedException;
+import Exceptions.CustomerLoginError;
+import Exceptions.TicketPurchasedException;
 import service.CustomerProvider;
 import service.TicketProvider;
 

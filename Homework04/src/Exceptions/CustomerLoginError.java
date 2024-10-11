@@ -1,4 +1,4 @@
-package Excptions;
+package Exceptions;
 
 public class CustomerLoginError extends Exception {
 
