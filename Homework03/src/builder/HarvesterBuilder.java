@@ -1,12 +1,12 @@
 package builder;
 
-import Implements.CarBuilder;
+import Implements.ICarBuilder;
 import models.Color;
 import models.FuelType;
 import models.GearboxType;
 import models.Harvester;
 
-public class HarvesterBuilder implements CarBuilder {
+public class HarvesterBuilder implements ICarBuilder {
 
     // region private default fields
 

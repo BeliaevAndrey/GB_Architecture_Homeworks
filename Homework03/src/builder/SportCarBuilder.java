@@ -1,12 +1,12 @@
 package builder;
 
-import Implements.CarBuilder;
+import Implements.ICarBuilder;
 import models.Color;
 import models.FuelType;
 import models.GearboxType;
 import models.SportCar;
 
-public class SportCarBuilder implements CarBuilder {
+public class SportCarBuilder implements ICarBuilder {
 
     // region common default field
 

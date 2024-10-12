@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public class FillingStation implements IFillingStation {
 
+        
         private final int carCapacity;
         private final Collection<FuelType> fuelTypes = new ArrayList<>();
 

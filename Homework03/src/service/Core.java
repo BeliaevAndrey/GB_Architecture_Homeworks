@@ -13,11 +13,11 @@ import java.util.Collection;
 public class Core {
 
     private static int counter = 0;
-    Collection<Harvester> harvesters;
-    Collection<SportCar> sportCars;
-    HarvesterBuilder harvesterBuilder;
-    SportCarBuilder sportCarBuilder;
-    FillingStation fillingStation;
+    private final Collection<Harvester> harvesters;
+    private final Collection<SportCar> sportCars;
+    private final HarvesterBuilder harvesterBuilder;
+    private final SportCarBuilder sportCarBuilder;
+    private final FillingStation fillingStation;
 
     public Core() {
         harvesterBuilder = new HarvesterBuilder();
@@ -39,7 +39,7 @@ public class Core {
         }
     }
 
-    public void register(Car car) {
+    private void register(Car car) {
 
         switch (car.getType()) {
             case Truck -> car.setVehicleRegistrationPlate(String.format("Trck %04d", ++counter));
@@ -48,12 +48,12 @@ public class Core {
         }
     }
 
-    public void fuelCar(Car car) {
+    private void fuelCar(Car car) {
         fillingStation.addCar(car);
         fillingStation.doWork();
     }
 
-    public void checkAllMoves() {
+    private void checkAllMoves() {
         for (Car car : sportCars) {
             if (!car.isMoving()) goCar(car);
         }

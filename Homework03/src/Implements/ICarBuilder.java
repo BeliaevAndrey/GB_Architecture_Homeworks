@@ -5,7 +5,7 @@ import models.Color;
 import models.FuelType;
 import models.GearboxType;
 
-public interface CarBuilder {
+public interface ICarBuilder {
 
     void setBrand(String brand);
 
