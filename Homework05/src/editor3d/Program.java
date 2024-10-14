@@ -26,22 +26,17 @@ public class Program {
 
     public static void main(String[] args) {
 
+        Program p = new Program();
         Editor3D editor3D = new Editor3D();
+        p.menu(editor3D);
+
+    }
+
+
+    void menu(Editor3D editor3D) {
         boolean flag = true;
-
         while(flag) {
-            System.out.println("*** МОЙ 30 РЕДАКТОР ***");
-            System.out.println("=======================");
-            System.out.println("1. Открыть проект");
-            System.out.println("2. Сохранить проект");
-            System.out.println("3. Отобразить параметры проекта");
-            System.out.println("4. Отобразить все модели проекта");
-            System.out.println("5. Отобразить все текстуры проекта");
-            System.out.println("6. Выполнить рендер всех моделей");
-            System.out.println("7. Выполнить рендер модели");
-            System.out.println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ");
-            System.out.print("Пожалуйста, выберите пункт меню: ");
-
+            printMenu();
             if (scanner.hasNextInt()) {
                 int no = scanner.nextInt();
                 scanner.nextLine();
@@ -94,6 +89,19 @@ public class Program {
         }
     }
 
+    void printMenu() {
+        System.out.println("*** МОЙ 30 РЕДАКТОР ***");
+        System.out.println("=======================");
+        System.out.println("1. Открыть проект");
+        System.out.println("2. Сохранить проект");
+        System.out.println("3. Отобразить параметры проекта");
+        System.out.println("4. Отобразить все модели проекта");
+        System.out.println("5. Отобразить все текстуры проекта");
+        System.out.println("6. Выполнить рендер всех моделей");
+        System.out.println("7. Выполнить рендер модели");
+        System.out.println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ");
+        System.out.print("Пожалуйста, выберите пункт меню: ");
+    }
 
 }
 

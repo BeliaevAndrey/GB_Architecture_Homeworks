@@ -7,6 +7,7 @@ import editor3d.Implements.Entity;
  */
 public class Texture implements Entity {
 
+    boolean modified = false;
     private static int counter = 5000;
     private final int id;
 
@@ -22,5 +23,13 @@ public class Texture implements Entity {
     @Override
     public String toString() {
         return String.format("Texture #%d", id);
+    }
+
+    public boolean isModified() {
+        return modified;
+    }
+
+    public void setModified(boolean modified) {
+        this.modified = modified;
     }
 }

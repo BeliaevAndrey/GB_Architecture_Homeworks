@@ -51,6 +51,7 @@ public class ProjectFile {
     public void setSetting3(boolean setting3) {
         this.setting3 = setting3;
     }
-// endregion
+
+    // endregion
 
 }
