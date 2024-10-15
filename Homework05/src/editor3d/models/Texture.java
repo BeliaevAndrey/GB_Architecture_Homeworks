@@ -7,7 +7,7 @@ import editor3d.Implements.Entity;
  */
 public class Texture implements Entity {
 
-    boolean modified = false;
+    private boolean modified = false;
     private static int counter = 5000;
     private final int id;
 

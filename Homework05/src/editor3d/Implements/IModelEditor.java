@@ -5,8 +5,8 @@ import editor3d.models.Texture;
 
 public interface IModelEditor {
 
-    Model3D createModel();
-    Model3D editModel(Model3D model3D);
+    void createModel();
+    void editModel(int modelNo);
     boolean saveModel();
     boolean addTexture(Texture texture);
 

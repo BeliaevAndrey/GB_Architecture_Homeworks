@@ -10,6 +10,7 @@ import java.util.Collection;
  */
 public class Model3D implements Entity {
 
+    private boolean modified = false;
     private static int counter = 10000;
 
     private final int id;
@@ -47,8 +48,14 @@ public class Model3D implements Entity {
         this.textures = textures;
     }
 
+    public boolean isModified() {
+        return modified;
+    }
 
-    // endregion
+    public void setModified(boolean modified) {
+        this.modified = modified;
+    }
+// endregion
 
     @Override
     public String toString() {

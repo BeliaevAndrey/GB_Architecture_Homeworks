@@ -19,4 +19,6 @@ public interface BusinessLogicalLayer {
 
     void renderAllModels();
 
+    void addEntity(Entity entity);
+
 }

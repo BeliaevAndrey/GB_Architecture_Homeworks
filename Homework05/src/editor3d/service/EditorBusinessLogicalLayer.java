@@ -2,6 +2,7 @@ package editor3d.service;
 
 import editor3d.Implements.BusinessLogicalLayer;
 import editor3d.Implements.DatabaseAccess;
+import editor3d.Implements.Entity;
 import editor3d.models.Model3D;
 import editor3d.models.Texture;
 
@@ -32,6 +33,11 @@ class EditorBusinessLogicalLayer implements BusinessLogicalLayer {
     @Override
     public void renderModel(Model3D model) {
         processRender(model);
+    }
+
+    @Override
+    public void addEntity(Entity entity) {
+        databaseAccess.addEntity(entity);
     }
 
     @Override

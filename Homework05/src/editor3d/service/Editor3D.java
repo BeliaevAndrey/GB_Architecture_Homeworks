@@ -123,4 +123,8 @@ public class Editor3D implements UILayer {
         System.out.printf("Rendering operation took %d ms\n", (endTime - startTime));
 
     }
+
+    public BusinessLogicalLayer getBusinessLogicalLayer() {
+        return businessLogicalLayer;
+    }
 }

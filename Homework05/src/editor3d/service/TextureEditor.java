@@ -3,9 +3,6 @@ package editor3d.service;
 import editor3d.Implements.ITextureEditor;
 import editor3d.models.Texture;
 
-import java.util.Collection;
-
-
 public class TextureEditor implements ITextureEditor {
 
 

@@ -12,39 +12,45 @@ public class ModelEditor implements IModelEditor {
 
 
     private BusinessLogicalLayer bll;
-    private final Model3D model;
+    private Model3D model;
+
 
     private ArrayList<Texture> textures;
 
     public ModelEditor(BusinessLogicalLayer bll) {
+        if (bll == null) throw new RuntimeException("Undefined project file");
         this.bll = bll;
-        this.model = createModel();
     }
 
-    public ModelEditor(Model3D model) {
+    public ModelEditor(BusinessLogicalLayer bll, Model3D model) {
+        this.bll = bll;
         this.model = model;
         this.textures = (ArrayList<Texture>) model.getTextures();
     }
 
     @Override
-    public Model3D createModel() {
-        return new Model3D();
+    public void createModel() {
+        model = new Model3D();
+        saveModel();
     }
 
     @Override
-    public Model3D editModel(Model3D model) {
-        return null;
+    public void editModel(int modelNo) {
+        this.model = ((ArrayList<Model3D>) bll.getAllModels()).get(modelNo);
+        model.setModified(true);
+        saveModel();
     }
 
     @Override
     public boolean saveModel() {
         this.model.setTextures(this.textures);
-        bll.getAllModels().add(model);
+        bll.addEntity(model);
         return true;
     }
 
     @Override
     public boolean addTexture(Texture texture) {
+        // TODO: place new texture from TextureEditor to texture collection; save()
         return false;
     }
 

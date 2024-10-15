@@ -1,6 +1,8 @@
 package editor3d;
 
 import editor3d.service.Editor3D;
+import editor3d.service.ModelEditor;
+import editor3d.service.TextureEditor;
 
 import java.util.Scanner;
 
@@ -67,6 +69,11 @@ public class Program {
                         case 6:
                             editor3D.renderAll();
                             break;
+                        case 8:
+                            ModelEditor me = new ModelEditor(
+                                    editor3D.getBusinessLogicalLayer());
+                            modelEditorMenu(me);
+                            break;
                         case 7:
                             System.out.print("Input model number: ");
                             if (scanner.hasNextInt()) {
@@ -89,20 +96,76 @@ public class Program {
         }
     }
 
+    void modelEditorMenu(ModelEditor modelEditor) {
+        boolean flag = true;
+        while(flag) {
+            printModelEditorMenu();
+            if (scanner.hasNextInt()) {
+                int no = scanner.nextInt();
+                scanner.nextLine();
+                try {
+                    switch (no) {
+                        case 0:
+                            System.out.println("Finishing. Bye!");
+                            flag = false;
+                            break;
+                        // "1. Add model"
+                        case 1: modelEditor.createModel(); break;
+                        // "2. Edit model"
+                        case 2:
+                            System.out.print("Input model number: ");
+                            if (scanner.hasNextInt()) {
+                                int modelNo = scanner.nextInt();
+                                modelEditor.editModel(modelNo);
+                            } else {
+                                System.out.println("Incorrect model number!");
+                            }
+                            break;
+                        // "3. Add texture"
+                        case 3:
+                            TextureEditor textureEditor = new TextureEditor();
+                            textureEditor.createTexture();
+                            break;
+                        default: System.out.println("Incorrect menu number!");
+                    }
+                } catch (Exception e ) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                System.out.println("Input correct menu number.");
+                scanner.nextLine();
+            }
+
+        }
+    }
+
     void printMenu() {
-        System.out.println("*** МОЙ 30 РЕДАКТОР ***");
+
+        System.out.println("*** MY 3D EDITOR ***");
         System.out.println("=======================");
-        System.out.println("1. Открыть проект");
-        System.out.println("2. Сохранить проект");
-        System.out.println("3. Отобразить параметры проекта");
-        System.out.println("4. Отобразить все модели проекта");
-        System.out.println("5. Отобразить все текстуры проекта");
-        System.out.println("6. Выполнить рендер всех моделей");
-        System.out.println("7. Выполнить рендер модели");
-        System.out.println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ");
-        System.out.print("Пожалуйста, выберите пункт меню: ");
+        System.out.println("1. Open project");
+        System.out.println("2. Save project");
+        System.out.println("3. Display project parameters");
+        System.out.println("4. Show all project models");
+        System.out.println("5. Show all project textures");
+        System.out.println("6. Render all models");
+        System.out.println("7. Render a model");
+        System.out.println("8. Model editor");
+        System.out.println("0. EXIT APPLICATION");
+        System.out.print("Choose menu point, please: ");
+
+    }
+
+    void printModelEditorMenu() {
+
+        System.out.println("*** MODEL EDITOR ***");
+        System.out.println("=======================");
+        System.out.println("1. Add model");
+        System.out.println("2. Edit model");
+        System.out.println("3. Add texture");
+        System.out.println("0. BACK TO MAIN MENU");
+        System.out.print("Choose menu point, please: ");
+
     }
 
 }
-
-
