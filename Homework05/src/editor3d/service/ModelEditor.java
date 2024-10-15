@@ -47,15 +47,9 @@ public class ModelEditor implements IModelEditor {
         bll.addEntity(model);
         return true;
     }
-
-    @Override
-    public boolean addTexture(Texture texture) {
-        // TODO: place new texture from TextureEditor to texture collection; save()
-        return false;
+    public boolean removeModel(int i) {
+        Model3D modelToRm = ((ArrayList<Model3D>) bll.getAllModels()).get(i);
+        return bll.removeEntity(modelToRm);
     }
 
-    @Override
-    public void removeTexture(int index) {
-        textures.remove(index);
-    }
 }

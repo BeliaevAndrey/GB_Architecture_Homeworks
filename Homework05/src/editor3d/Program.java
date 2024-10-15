@@ -72,7 +72,9 @@ public class Program {
                         case 8:
                             ModelEditor me = new ModelEditor(
                                     editor3D.getBusinessLogicalLayer());
-                            modelEditorMenu(me);
+                            TextureEditor te = new TextureEditor(
+                                    editor3D.getBusinessLogicalLayer());
+                            modelEditorMenu(me, te);
                             break;
                         case 7:
                             System.out.print("Input model number: ");
@@ -96,7 +98,7 @@ public class Program {
         }
     }
 
-    void modelEditorMenu(ModelEditor modelEditor) {
+    void modelEditorMenu(ModelEditor modelEditor, TextureEditor textureEditor) {
         boolean flag = true;
         while(flag) {
             printModelEditorMenu();
@@ -106,7 +108,7 @@ public class Program {
                 try {
                     switch (no) {
                         case 0:
-                            System.out.println("Finishing. Bye!");
+                            System.out.println("Going back to main menu.");
                             flag = false;
                             break;
                         // "1. Add model"
@@ -123,9 +125,29 @@ public class Program {
                             break;
                         // "3. Add texture"
                         case 3:
-                            TextureEditor textureEditor = new TextureEditor();
                             textureEditor.createTexture();
                             break;
+                        // "4. Remove model"
+                        case 4:
+                            System.out.print("Input model number: ");
+                            if (scanner.hasNextInt()) {
+                                int modelNo = scanner.nextInt();
+                                if (modelEditor.removeModel(modelNo)) System.out.println("Model removed");
+                            } else {
+                                System.out.println("Incorrect model number!");
+                            }
+                            break;
+                        // "5. Remove Texture"
+                        case 5:
+                            System.out.print("Input texture number: ");
+                            if (scanner.hasNextInt()) {
+                                int textureNo = scanner.nextInt();
+                                if (textureEditor.removeTexture(textureNo)) System.out.println("Texture removed.");;
+                            } else {
+                                System.out.println("Incorrect texture number!");
+                            }
+                            break;
+
                         default: System.out.println("Incorrect menu number!");
                     }
                 } catch (Exception e ) {
@@ -163,6 +185,8 @@ public class Program {
         System.out.println("1. Add model");
         System.out.println("2. Edit model");
         System.out.println("3. Add texture");
+        System.out.println("4. Remove model");
+        System.out.println("5. Remove texture");
         System.out.println("0. BACK TO MAIN MENU");
         System.out.print("Choose menu point, please: ");
 

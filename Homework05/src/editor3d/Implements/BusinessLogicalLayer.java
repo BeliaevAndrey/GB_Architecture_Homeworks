@@ -20,5 +20,6 @@ public interface BusinessLogicalLayer {
     void renderAllModels();
 
     void addEntity(Entity entity);
+    boolean removeEntity(Entity entity);
 
 }

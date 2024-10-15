@@ -8,8 +8,7 @@ public interface IModelEditor {
     void createModel();
     void editModel(int modelNo);
     boolean saveModel();
-    boolean addTexture(Texture texture);
 
-    void removeTexture(int index);
+    boolean removeModel(int i);
 
 }

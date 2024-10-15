@@ -37,8 +37,8 @@ class EditorDatabaseAccess implements DatabaseAccess {
     }
 
     @Override
-    public void removeEntity(Entity entity) {
-        editorDatabase.getAll().add(entity);
+    public boolean removeEntity(Entity entity) {
+        return editorDatabase.getAll().remove(entity);
     }
 
     @Override

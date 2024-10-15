@@ -13,7 +13,7 @@ import java.util.Collection;
 public interface DatabaseAccess {
     void addEntity(Entity entity);
 
-    void removeEntity(Entity entity);
+    boolean removeEntity(Entity entity);
 
     Collection<Texture> getAllTextures();
 

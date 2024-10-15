@@ -1,25 +1,42 @@
 package editor3d.service;
 
+import editor3d.Implements.BusinessLogicalLayer;
 import editor3d.Implements.ITextureEditor;
 import editor3d.models.Texture;
 
+import java.util.ArrayList;
+
 public class TextureEditor implements ITextureEditor {
 
+    BusinessLogicalLayer bll;
 
-    @Override
-    public Texture createTexture() {
-        return new Texture();
+    Texture texture;
+
+    public TextureEditor(BusinessLogicalLayer bll) {
+        if (bll == null) throw new RuntimeException("Undefined project file.");
+        this.bll = bll;
     }
 
     @Override
-    public Texture editTexture(Texture texture) {
+    public void createTexture() {
+        texture = new Texture();
+        saveTexture();
+    }
+
+    @Override
+    public void editTexture() {
         texture.setModified(true);
-        return texture;
+        saveTexture();
     }
 
     @Override
-    public boolean saveTexture() {
-        return false;
+    public void saveTexture() {
+        bll.addEntity(texture);
+    }
+
+    public boolean removeTexture(int i) {
+        Texture textureToRm = ((ArrayList<Texture>) bll.getAllTextures()).get(i);
+        return bll.removeEntity(textureToRm);
     }
 
 }

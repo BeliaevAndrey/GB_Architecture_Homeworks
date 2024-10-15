@@ -4,8 +4,9 @@ import editor3d.models.Texture;
 
 public interface ITextureEditor {
 
-    Texture createTexture();
-    Texture editTexture(Texture texture);
-    boolean saveTexture();
+    void createTexture();
+    void editTexture();
+    void saveTexture();
 
+    boolean removeTexture(int i);
 }
